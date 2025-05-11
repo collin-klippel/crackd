@@ -6,14 +6,38 @@
   "scripts": {
     "start": "node crackd.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "A Node.js script to make commits to GitHub repositories",
+  "exports": {
+    ".": "./crackd.js"
+  },
+  "keywords": [
+    "github",
+    "commit",
+    "automation",
+    "git",
+    "cowsay",
+    "txtgen",
+    "nodejs",
+    "node",
+    "fun"
+  ],
+  "author": "Collin Klippel",
+  "license": "MIT",
+  "description": "A fun Node.js script to make automated commits to GitHub repositories with random content and cowsay art",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/collin-klippel/crackd.git"
+  },
+  "bugs": {
+    "url": "https://github.com/collin-klippel/crackd/issues"
+  },
+  "homepage": "https://github.com/collin-klippel/crackd#readme",
   "dependencies": {
     "@octokit/rest": "^20.0.2",
     "@ndaidong/txtgen": "^4.0.1",
     "cowsay": "^1.6.0",
     "dotenv": "^16.4.5"
+  },
+  "engines": {
+    "node": ">=14.0.0"
   }
 }

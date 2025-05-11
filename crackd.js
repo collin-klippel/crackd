@@ -119,5 +119,3 @@ export default async function makeCommit(options = {}) {
 
 // Run the script
 makeCommit();
-
-export { getCommitMessage, getCommitPath, getCommitContent };

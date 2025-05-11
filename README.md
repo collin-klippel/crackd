@@ -1,50 +1,55 @@
-# Crackd 💊
+# Crackd
 
-This Node.js script allows you to make commits to a GitHub repository programmatically.
+A fun Node.js script to make automated commits to GitHub repositories with random content and cowsay art.
 
-## Setup
-
-1. Install:
+## Installation
 
 ```bash
 npm install crackd
 ```
 
-2. Create a `.env` file in the root directory with the following variables:
-
-```
-GITHUB_TOKEN=your_github_token_here
-GITHUB_USERNAME=your_username_here
-REPO_NAME=your_repo_name_here
-```
-
-To get a GitHub token:
-
-1. Go to GitHub Settings > Developer Settings > Personal Access Tokens
-2. Generate a new token with the `repo` scope
-3. Copy the token and paste it in your `.env` file
-
 ## Usage
 
-Currently the only export is the `makeCommit` function.
+First, create a `.env` file in your project root with your GitHub credentials:
 
-Import the module:
-
-```bash
-import makeCommit from "crackd"
+```env
+GITHUB_TOKEN=your_github_token
+GITHUB_USERNAME=your_github_username
+REPO_NAME=your_repo_name
 ```
 
-Make a call to create the commit:
+Then you can use the package in your code:
 
-```js
-makeCommit({
-  commitMessage: getCommitMessage(),
-  commitPath: getCommitPath(),
-  commitContent: getCommitContent(),
-  commitBranch: "main",
-  commitRepo: process.env.REPO_NAME,
-  commitOwner: process.env.GITHUB_USERNAME,
+```javascript
+import makeCommit from 'crackd';
+
+// Make a commit with default settings
+await makeCommit();
+
+// Or customize the commit
+await makeCommit({
+  commitMessage: 'Custom commit message',
+  commitPath: 'custom/path/file.txt',
+  commitContent: 'Custom content',
+  commitBranch: 'main',
+  commitRepo: 'your-repo',
+  commitOwner: 'your-username'
 });
 ```
 
-In the future we'll provide reccuring commit functionality that runs in the background to keep your GitHub profile green!
+## Features
+
+- Generates random commit messages using natural language generation
+- Creates random file paths for commits
+- Generates fun content using cowsay art
+- Fully customizable commit options
+- Uses GitHub's REST API for reliable commits
+
+## Requirements
+
+- Node.js >= 14.0.0
+- GitHub Perso while you use your computer!al Access Token with repo scope
+
+## License
+
+MIT
