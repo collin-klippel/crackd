@@ -5,11 +5,6 @@ import cowsay from "cowsay";
 
 dotenv.config();
 
-// Initialize Octokit with GitHub token
-const octokit = new Octokit({
-  auth: process.env.GITHUB_TOKEN,
-});
-
 function getCommitMessage() {
   return sentence();
 }
@@ -35,25 +30,29 @@ function getCommitContent() {
 
 export default async function makeCommit(options = {}) {
   const {
-    commitMessage = getCommitMessage(),
-    commitPath = getCommitPath(),
-    commitContent = getCommitContent(),
     commitBranch = "main",
-    commitRepo = process.env.REPO_NAME,
-    commitOwner = process.env.GITHUB_USERNAME,
+    commitContent = getCommitContent(),
+    commitMessage = getCommitMessage(),
+    commitOwner,
+    commitPath = getCommitPath(),
+    commitRepo,
+    githubToken,
   } = options;
 
-  if (
-    !commitMessage ||
-    !commitPath ||
-    !commitContent ||
-    !commitRepo ||
-    !commitOwner
-  ) {
-    throw new Error("All options are required");
+  if (!githubToken) {
+    throw new Error("GitHub token is required");
+  }
+
+  if (!commitOwner || !commitRepo) {
+    throw new Error("Commit owner and repo are required");
   }
 
   try {
+    // Initialize Octokit with GitHub token
+    const octokit = new Octokit({
+      auth: githubToken,
+    });
+
     // Get the default branch (usually 'main' or 'master')
     const { data: repo } = await octokit.repos.get({
       owner: commitOwner,
@@ -116,6 +115,3 @@ export default async function makeCommit(options = {}) {
     console.error("Error making commit:", error.message);
   }
 }
-
-// Run the script
-makeCommit();

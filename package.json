@@ -4,7 +4,7 @@
   "type": "module",
   "main": "crackd.js",
   "scripts": {
-    "start": "node crackd.js"
+    "test": "node test.js"
   },
   "exports": {
     ".": "./crackd.js"

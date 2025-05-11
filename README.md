@@ -2,6 +2,11 @@
 
 A fun Node.js script to make automated commits to GitHub repositories with random content and cowsay art.
 
+## Requirements
+
+- Node.js >= 14.0.0
+- GitHub Personal Access Token with repo scope
+
 ## Installation
 
 ```bash
@@ -21,19 +26,24 @@ REPO_NAME=your_repo_name
 Then you can use the package in your code:
 
 ```javascript
-import makeCommit from 'crackd';
+import makeCommit from "crackd";
 
 // Make a commit with default settings
-await makeCommit();
+await makeCommit({
+  commitOwner: process.env.GITHUB_USERNAME,
+  commitRepo: process.env.REPO_NAME,
+  githubToken: process.env.GITHUB_TOKEN,
+});
 
 // Or customize the commit
 await makeCommit({
-  commitMessage: 'Custom commit message',
-  commitPath: 'custom/path/file.txt',
-  commitContent: 'Custom content',
-  commitBranch: 'main',
-  commitRepo: 'your-repo',
-  commitOwner: 'your-username'
+  commitBranch: "main",
+  commitContent: getCommitContent(),
+  commitMessage: getCommitMessage(),
+  commitOwner: process.env.GITHUB_USERNAME,
+  commitPath: getCommitPath(),
+  commitRepo: process.env.REPO_NAME,
+  githubToken: process.env.GITHUB_TOKEN,
 });
 ```
 
@@ -44,11 +54,6 @@ await makeCommit({
 - Generates fun content using cowsay art
 - Fully customizable commit options
 - Uses GitHub's REST API for reliable commits
-
-## Requirements
-
-- Node.js >= 14.0.0
-- GitHub Perso while you use your computer!al Access Token with repo scope
 
 ## License
 
