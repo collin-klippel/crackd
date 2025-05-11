@@ -1,9 +1,6 @@
-import dotenv from "dotenv";
 import { Octokit } from "@octokit/rest";
 import { sentence, paragraph } from "@ndaidong/txtgen";
 import cowsay from "cowsay";
-
-dotenv.config();
 
 function getCommitMessage() {
   return sentence();
