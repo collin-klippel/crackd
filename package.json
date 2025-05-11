@@ -1,0 +1,19 @@
+{
+  "name": "crackd",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "crackd.js",
+  "scripts": {
+    "start": "node crackd.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "A Node.js script to make commits to GitHub repositories",
+  "dependencies": {
+    "@octokit/rest": "^20.0.2",
+    "@ndaidong/txtgen": "^4.0.1",
+    "cowsay": "^1.6.0",
+    "dotenv": "^16.4.5"
+  }
+}
