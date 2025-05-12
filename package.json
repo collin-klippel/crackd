@@ -4,7 +4,7 @@
   "type": "module",
   "main": "crackd.js",
   "scripts": {
-    "test": "node test.js"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "exports": {
     ".": "./crackd.js"
@@ -37,7 +37,19 @@
     "cowsay": "^1.6.0",
     "dotenv": "^16.4.5"
   },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "@babel/preset-env": "^7.24.0",
+    "@babel/core": "^7.24.0"
+  },
   "engines": {
     "node": ">=14.0.0"
+  },
+  "jest": {
+    "transform": {},
+    "testEnvironment": "node",
+    "moduleNameMapper": {
+      "^(\\.{1,2}/.*)\\.js$": "$1"
+    }
   }
 }

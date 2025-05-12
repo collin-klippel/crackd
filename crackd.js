@@ -1,6 +1,6 @@
 import { Octokit } from "@octokit/rest";
 import { sentence, paragraph } from "@ndaidong/txtgen";
-import cowsay from "cowsay";
+import * as cowsay from "cowsay";
 
 function getCommitMessage() {
   return sentence();
